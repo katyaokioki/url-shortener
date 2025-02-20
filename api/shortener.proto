@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package shortener;
+
+option go_package = "url-shortener/api";
+
+service URLShortener {
+  rpc ShortenURL (ShortenRequest) returns (ShortenResponse);
+  rpc ExpandURL (ExpandRequest) returns (ExpandResponse);
+}
+
+message ShortenRequest {
+  string original_url = 1;
+}
+
+message ShortenResponse {
+  string short_url = 1;
+}
+
+message ExpandRequest {
+  string short_url = 1;
+}
+
+message ExpandResponse {
+  string original_url = 1;
+}
